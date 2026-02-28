@@ -12,13 +12,13 @@
         <header class="header">
             <div class="primary-header">
                 <div class="container">
-                    <nav>
+                    <nav class="primary-header__links">
                         <a href="{% url 'home_page' %}">Home</a>
                         <a href="#">About</a>
                         <a href="#">FAQ</a>
                         <a href="#">Contact us</a>
                     </nav>
-                    <nav>
+                    <nav class="primary-header__socials">
                         <a href="">
                             <img src="{% static 'img/threads.svg' %}" alt="threads">
                         </a>
@@ -28,6 +28,18 @@
                         <a href="">
                             <img src="{% static 'img/instagram.svg' %}" alt="instagram">
                         </a>
+                    </nav>
+                    <input type="checkbox" id="primary-menu-toggle" class="primary-header__toggle">
+                    <label for="primary-menu-toggle" class="primary-header__burger" aria-label="Open navigation menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                    <nav class="primary-header__menu">
+                        <a href="{% url 'home_page' %}">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Contact us</a>
                     </nav>
                 </div>
             </div>

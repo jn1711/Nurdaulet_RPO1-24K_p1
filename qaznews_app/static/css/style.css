@@ -57,6 +57,12 @@ img{
     flex-wrap: wrap;
 }
 
+.primary-header__toggle,
+.primary-header__burger,
+.primary-header__menu{
+    display: none;
+}
+
 .secondary-header .container{
     background-color: var(--secondary);
     padding: 12px 0;
@@ -531,6 +537,98 @@ footer{
     .primary-header .container nav,
     .third-header nav{
         gap: 12px;
+    }
+
+    .secondary-header,
+    .third-header,
+    .primary-header__links{
+        display: none;
+    }
+
+    .primary-header .container{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .primary-header__socials{
+        order: 1;
+    }
+
+    .primary-header__toggle,
+    .primary-header__burger{
+        display: inline-flex;
+    }
+
+    .primary-header__toggle{
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .primary-header__burger{
+        order: 2;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        border: 1px solid #575757;
+        background-color: #2b2b2b;
+        cursor: pointer;
+        padding: 0 10px;
+        margin-left: auto;
+    }
+
+    .primary-header__burger span{
+        width: 100%;
+        height: 2px;
+        background-color: var(--white);
+        border-radius: 10px;
+        transition: 0.25s ease;
+    }
+
+    .primary-header__menu{
+        order: 3;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: #2b2b2b;
+        border-radius: 14px;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .primary-header__menu a{
+        width: 100%;
+        padding: 12px 14px;
+    }
+
+    .primary-header__menu a + a{
+        border-top: 1px solid #474747;
+    }
+
+    .primary-header__toggle:checked + .primary-header__burger + .primary-header__menu{
+        max-height: 260px;
+        padding: 6px 0;
+        margin-top: 10px;
+    }
+
+    .primary-header__toggle:checked + .primary-header__burger span:nth-child(1){
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .primary-header__toggle:checked + .primary-header__burger span:nth-child(2){
+        opacity: 0;
+    }
+
+    .primary-header__toggle:checked + .primary-header__burger span:nth-child(3){
+        transform: translateY(-7px) rotate(-45deg);
     }
 
     .secondary-header .container-fluid{

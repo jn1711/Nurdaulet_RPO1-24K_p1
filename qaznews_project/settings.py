@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-psq@4g1k+e+wpbjam%wfsb3dwd-m%8t87^vs7sl=_cm$iooshw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['nurdauletrpo124kp1.pythonanywhere.com']
 
 
 # Application definition
@@ -117,5 +117,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = '/home/nurdauletrpo124kp1/nurdaulet_rpo1-24k_p1/staticfiles/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]

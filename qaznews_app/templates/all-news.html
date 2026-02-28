@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}All news{% endblock %}
+
+{% block content %}
+<section class="news-block">
+    <div class="container-fluid">
+        <div class="news-block__content">
+            <h3 style="font-size: 32px;">All news</h3>
+            {% for post in posts %}
+            <div class="news-block__card">
+                <img src="{{ post.image_url }}" alt="" class="news-block__img">
+                <div class="news-block__info">
+                    <h3>{{ post.title|truncatewords:7 }}</h3>
+                    <span>{{ post.created_at|date:"d.m.Y" }}</span>
+                    <a href="#">#{{ post.category.name }}</a>
+                    <p>{{ post.description|truncatewords:30 }}</p>
+                    <a href="{% url 'read_news' pk=post.pk %}">READ</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="news-block__adv">
+            <h3 style="font-size: 32px; margin-bottom: 25px;">Advertising</h3>
+            {% for adv in adverts %}
+            <div class="adv__card">
+                <a href="#">
+                    <img src="{{ adv.image_url }}" alt="adv">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<section class="news-block">
+                <div class="container-fluid">
+                    <div class="news-block__content">
+                        <h3 style="font-size: 32px;" class="mb-10">{{ post.title }}</h3>
+                        <p class="mb-15">{{ post.created_at|date:"d.m.Y" }}</p>
+                        <img src="{{ post.image_url }}" alt="" class="rounded-full-img">
+                        <p class="mb-15">{{ post.description }}</p>
+                        <a href="{% url 'news_by_category' pk=post.category.pk %}">#{{ post.category.name }}</a>
+
+                        <!-- related posts -->
+                        {% if related_posts %}
+                        <div class="related-posts">
+                            <h3 style="font-size: 24px; margin: 25px 0;">Смотрите также</h3>
+                            <div class="related-posts__grid">
+                                {% for r in related_posts %}
+                                <div class="related-post__card">
+                                    <img src="{{ r.image_url }}" alt="" class="related-post__img">
+                                    <div class="related-post__info">
+                                        <h3>{{ r.title|truncatewords:7 }}</h3>
+                                        <span>{{ r.created_at|date:"d.m.Y" }}</span>
+                                        <a href="#">#{{ r.category.name }}</a>
+                                        <p>{{ r.description|truncatewords:30 }}</p>
+                                        <a href="{% url 'read_news' pk=r.pk %}">READ</a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                    <div class="news-block__adv">
+                        <h3 style="font-size: 32px; margin-bottom: 25px;">Advertising</h3>
+                        {% for adv in adverts %}
+                        <div class="adv__card">
+                            <a href="#">
+                                <img src="{{ adv.image_url }}" alt="adv">
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+{% endblock %}
